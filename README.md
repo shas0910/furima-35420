@@ -21,9 +21,8 @@
 
 | Column        | Type          | Options                        |
 | ------------- | ------------- | ------------------------------ |
-| image         | ActiveStorage | null: false                    |
 | name          | string        | null: false                    |
-| description   | string        | null: false                    |
+| description   | text          | null: false                    |
 | category_id   | integer       | null: false                    |
 | status_id     | integer       | null: false                    |
 | charge_id     | integer       | null: false                    |
@@ -49,6 +48,7 @@
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
 
 
 ## addresses
