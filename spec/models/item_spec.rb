@@ -38,7 +38,7 @@ RSpec.describe Item, type: :model do
       it 'nameが40字より多くては登録できない' do
         @item.name = Faker::Lorem.characters(number: 41)
         @item.valid?
-        expect(@item.errors.full_messages).to include("Name is too long (maximum is 40 characters)")
+        expect(@item.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
       end
       it 'descriptionが空では登録できない' do
         @item.description = ''
@@ -48,32 +48,32 @@ RSpec.describe Item, type: :model do
       it 'descriptionが1000字より多くてはでは登録できない' do
         @item.description = Faker::Lorem.characters(number: 1001)
         @item.valid?
-        expect(@item.errors.full_messages).to include("Description is too long (maximum is 1000 characters)")
+        expect(@item.errors.full_messages).to include('Description is too long (maximum is 1000 characters)')
       end
       it 'category_idが1では登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
       it 'status_idが1では登録できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status Select")
+        expect(@item.errors.full_messages).to include('Status Select')
       end
       it 'charge_idが1では登録できない' do
         @item.charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Charge Select")
+        expect(@item.errors.full_messages).to include('Charge Select')
       end
       it 'prefecture_idが1では登録できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture Select")
+        expect(@item.errors.full_messages).to include('Prefecture Select')
       end
       it 'shipment_idが1では登録できない' do
         @item.shipment_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipment Select")
+        expect(@item.errors.full_messages).to include('Shipment Select')
       end
       it 'priceが空では登録できない' do
         @item.price = ''
@@ -83,29 +83,28 @@ RSpec.describe Item, type: :model do
       it 'priceが300未満では登録できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceが99,999,999より大きくては登録できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it 'priceが全角数字では登録できない' do
-        @item.price = "１２３４５"
+        @item.price = '１２３４５'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'priceが文字では登録できない' do
-        @item.price = "abcdehg"
+        @item.price = 'abcdehg'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'priceが半角数字と文字の混合では登録できない' do
-        @item.price = "123abc"
+        @item.price = '123abc'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
-
     end
   end
 end
